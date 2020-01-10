@@ -25,6 +25,7 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor; 
 }
 
+
 let SNAKE_SPRITE = "snake_tiles";
 let TAIL = 2;
 
@@ -38,6 +39,7 @@ function () {
     this.images = [];
     this.canvas = document.getElementById(this.options.id);
     this.ctx = this.canvas && this.canvas.getContext('2d');
+
     this.gOver = false;
     this.tileSize = 30;
     this.tail = TAIL;
@@ -62,6 +64,19 @@ function () {
 
         _this.updateApplePos();
 
+        document.getElementById("b1").addEventListener("click", function() {
+          _this.btnClickedU();
+        });
+        document.getElementById("b2").addEventListener("click", function() {
+          _this.btnClickedL();
+        });
+        let rightBtn = document.getElementById("b3").addEventListener("click", function() {
+          _this.btnClickedR();
+        });
+        let downBtn = document.getElementById("b4").addEventListener("click", function() {
+          _this.btnClickedD();
+        });
+
         document.addEventListener('keydown', function (e) {
           _this.keyDown(e);
         });
@@ -69,8 +84,10 @@ function () {
           _this.updateLoopFrame();
 
           _this.updateTimeStamp();
+
         });
       });
+      
     } //    Game methods
 
   }, {
@@ -336,9 +353,9 @@ function () {
   }, {
     key: "keyDown",
     value: function keyDown(event) {
-      let keyCode = event.keyCode;
+      
 
-      switch (keyCode) {
+      switch (event.keyCode) {
         case 37:
           this.updateMovement('left');
           break;
@@ -357,6 +374,29 @@ function () {
       }
     }
   }, {
+    key: "btnClickedU",
+    value: function btnClickedU() {
+        this.updateMovement('top');
+    }
+  },
+  {
+    key: "btnClickedL",
+    value: function btnClickedL() {
+        this.updateMovement('left'); 
+    }
+  },
+  {
+    key: "btnClickedR",
+    value: function btnClickedR() {
+        this.updateMovement('right');
+    }
+  },
+  {
+    key: "btnClickedD",
+    value: function btnClickedD() {
+        this.updateMovement('down');
+    }
+  },{
     key: "addTileToCanvas",
     value: function addTileToCanvas(tpx, tpy, sx, sy) {
       // image, posX in tile.png, posY in tile.png, tileWidth, tileHeight, posX in canvas, posY in canvas, tileSize in canvas = 25
