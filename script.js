@@ -1,5 +1,17 @@
 "use strict";
 
+function hideShow() {
+  var x = document.getElementById("buttons");
+  var y = document.getElementById("hideShow");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+    y.innerText = "Hide keys"
+  } else {
+    x.style.visibility = "hidden";
+    y.innerText = "Show keys"
+  }
+}
+
 function _classCallCheck(instance, Constructor) { 
   if (!(instance instanceof Constructor)) { 
     throw new TypeError("Cannot call a class as a function"); 
